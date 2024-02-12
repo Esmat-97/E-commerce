@@ -37,7 +37,7 @@ $pass=$_POST['pass'];
  $con = mysqli_connect($host, $username, $password, $dbname);
  
  if (!$con) {
-     echo "fail coonection";
+    echo "fail coonection";
  }
  else{
      echo "connected to data successfully"."<br>";
