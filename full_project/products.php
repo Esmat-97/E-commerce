@@ -73,7 +73,7 @@ $finish=mysqli_fetch_array($final);
 
 echo " <h1>the admin page</h1>"; 
             
-$all_users = mysqli_query($conn," SELECT * FROM users ");  
+
 
 
 
@@ -83,6 +83,8 @@ $all_users = mysqli_query($conn," SELECT * FROM users ");
 
 
  <?php
+$all_users = mysqli_query($conn," SELECT * FROM users ");  
+
 while($row = mysqli_fetch_assoc($all_users)) { 
    
   ?>

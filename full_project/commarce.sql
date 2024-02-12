@@ -4,7 +4,7 @@ use cookie;
 --     lname  VARCHAR(255),
 --     email VARCHAR(255),
 --     address   VARCHAR(255),
---       password   INT 
+--       password   VARCHAR(255)
 --    );
 
 -- CREATE TABLE IF NOT EXISTS products (
@@ -16,6 +16,9 @@ use cookie;
 --     category     VARCHAR(255),
 --     stock         INT
 -- );
+
+
+
 
 -- INSERT INTO products (id, name, price, description, image, category, stock) VALUES
 -- (1, 'Hyaluronic Acid Serum', 19, 'L\'Oréal Paris introduces Hyaluron Expert Replumping Serum formulated with 1.5% Hyaluronic Acid', 'https://cdn.dummyjson.com/product-images/16/thumbnail.jpg', 'skincare', 110),
@@ -29,11 +32,11 @@ use cookie;
 -- (9, 'Plant Hanger For Home', 85, 'Boho Decor Plant Hanger For Home Wall Decoration Macrame Wall Hanging Shelf', 'https://cdn.dummyjson.com/product-images/26/thumbnail.jpg', 'home-decoration', 20),
 -- (10, 'Key Holder', 65, 'Attractive DesignMetallic materialFour key hooksReliable & DurablePremium Quality', 'https://cdn.dummyjson.com/product-images/30/thumbnail.jpg', 'home-decoration', 17);
 
--- drop table users;
---  select * from users;
- -- DELETE FROM users;
- 
--- SET SQL_SAFE_UPDATES = 0;
+--  drop table users;
+  select * from users;
+--  DELETE FROM users;
+
+ SET SQL_SAFE_UPDATES = 0;
 
 -- drop table products;
  -- select * from products;
