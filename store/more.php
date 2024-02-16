@@ -1,5 +1,4 @@
 
-
 <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -8,6 +7,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     </head>
     <body>
+
 
 <?php
 
@@ -21,105 +21,36 @@ $host = "localhost";
  $conn = mysqli_connect($host, $username, $password, $dbname);
  
  if (!$conn) {
-     echo "fail coonection";
+  echo "fail coonection";
  }
  else{
-     echo "connected to data successfully"."<br>";
- }
+  echo "connected to data successfully"."<br>";
+ }    
  
 
  
-
-
-   /*   connect to cookie     */
-
-$user_tit=$_COOKIE['usertitle'];
-
-
-$final = mysqli_query($conn," SELECT * FROM users WHERE title='$user_tit' ");
-
-if (!$final) {
-   echo "fail to cookie";
-}
-else{
-   echo "connected to coookie "."<br>";
-}
-
-$finish=mysqli_fetch_array($final);
-
-     $give=$finish['title'];
-
-?>
-
-
-<a href="logout.php">logout</a>
-<h1> <?php echo "welcome". $give."<br>" ?></h1>
- 
-
-
-
-
-
-
-
-
-
- 
-
-    <?php 
-    /*   admin page */
-    
-    if($give == "mohamed"){
-
-echo " <h1>the admin page</h1>"; 
-            
-
-
-
-
-?>
- 
- <div class="row row-cols-1 row-cols-md-3  row-cols-lg-4 g-4">
-
-
- <?php
-$all_users = mysqli_query($conn," SELECT * FROM users ");  
-
-while($row = mysqli_fetch_assoc($all_users)) { 
    
-  ?>
+   if(isset($_POST['more'])){
 
-<div class="col">
-<div class="card h-15">
-<div class="card-body">
-  <div class="card-text"> name :<?php echo $row["title"]; ?> </div>
-</div>
-</div>
-</div>
-
-  <?php
-}
-}
-
-  ?>
-    </div>          
+  $input=$_POST['havename'];
+  echo $input;
+?>
 
 
-
-
-
-
+ 
     <div class="row row-cols-1 row-cols-md-3  row-cols-lg-4 g-4">
-
 
 <?php
 
 /*  show products */
 
-$result = mysqli_query($conn, "SELECT * FROM products;");
+$result = mysqli_query($conn, "SELECT * FROM products where `name`='$input'");
       while($row = mysqli_fetch_assoc($result)) { 
         
         ?>
+
+
+
        <div class="col">
         <div class="card h-60">
       <div class="card-body">
@@ -132,9 +63,14 @@ $result = mysqli_query($conn, "SELECT * FROM products;");
         <div class="card-text"> des :<?php echo $row["description"]; ?>  </div>
         <div class="card-text"> category :<?php echo $row["category"]; ?>  </div>
         <div class="card-text"> stock :<?php echo $row["stock"]; ?>  </div>
-        <div class="card-text">  <?php if($give == "mohamed"){
-                        echo " <button class='btn btn-warning' >delete</button> <button>update</button>";} ?> </div>
-      
+        
+        
+             
+
+              <?php
+               } 
+               ?> 
+            
 
 
     </div>
@@ -150,9 +86,11 @@ $result = mysqli_query($conn, "SELECT * FROM products;");
 
 
 
-               
-              
 
- 
+
+    
     </body>
     </html>
+
+
+
