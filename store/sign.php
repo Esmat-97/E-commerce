@@ -52,7 +52,6 @@ input[type="submit"]:hover {
 <p> title<input type="text" name="title"  ></p>
 <p> lname<input type="text" name="lname" ></p>
 <p>email<input type="text" name="email" ></p>
-<p> address<textarea   cols="20" rows="10"  name="address" ></textarea></p>
 <p>pass<input type="password" name="pass" ></p>
 <input type="submit"  value="submit"  name="submit">
     </form>
@@ -65,68 +64,42 @@ input[type="submit"]:hover {
 <?php
 if(isset($_POST['submit'])){
 
+    $title = $_POST['title'];
+    $last = $_POST['lname'];
+    $mail = $_POST['email'];
+    $pass = $_POST['pass'];
 
+    echo empty($_POST['title']) ? "Title is required<br>" : (preg_match('/[a-zA-Z]/', $_POST['title']) ? "Title is valid<br>" : "Title is not valid<br>");
+    echo empty($_POST['lname']) ? "Last name is required<br>" : (preg_match('/[a-zA-Z]/', $_POST['lname']) ? "Last name is valid<br>" : "Last name is not valid<br>");
+    echo empty($_POST['email']) ? "Email is required<br>" : (filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) ? "Email is valid<br>" : "Email is not valid<br>");
+    echo empty($_POST['pass']) ? "Password is required<br>" :
+        (!preg_match("/[a-z]/", $_POST['pass']) ? "Password must have lowercase<br>" : "Password contains lowercase<br>") .
+        (!preg_match("/[A-Z]/", $_POST['pass']) ? "Password must have uppercase<br>" : "Password contains uppercase<br>") .
+        (!preg_match("/[0-9]/", $_POST['pass']) ? "Password must have numbers<br>" : "Password contains numbers<br>") .
+        (!preg_match("/[!@#$%^&*()-_=+{};:,<.>]/", $_POST['pass']) ? "Password must have special characters<br>" : "Password contains special characters<br>");
 
-$title=$_POST['title'];
-$last=$_POST['lname'];
-$mail=$_POST['email'];
-$add=$_POST['address'];
-$pass=$_POST['pass'];
+    // Connect to the database
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "commarce_php"; // Add semicolon at the end
 
+    try {
+        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+        // Set the PDO error mode to exception
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-
-echo empty($_POST['title']) ? "title is required<br>" : (preg_match('/[a-zA-Z]/', $_POST['title']) ? "title is valid<br>" : "title is not valid<br>");
-echo empty($_POST['lname']) ? "lname is required<br>" : (preg_match('/[a-zA-Z]/', $_POST['lname']) ? "lname is valid<br>" : "lname is not valid<br>");
-echo empty($_POST['email']) ? "email is required<br>" : (preg_match('/[\w{10,}@.com]/', $_POST['email']) ? "email is valid<br>" : "fname is not valid<br>");
-echo empty($_POST['address']) ? "address is required<br>" : (preg_match('/[a-zA-Z]/', $_POST['address']) ? "address is valid<br>" : "address is not valid<br>");
-echo empty($_POST['pass']) ? "password is required<br>" : 
-    (!preg_match("/[a-z]/",$_POST['pass']) ? "password must have lower<br>" : "password valid lower<br>") .
-    (!preg_match("/[A-Z]/",$_POST['pass']) ? "password must have upper<br>" : "password valid upper<br>") .
-    (!preg_match("/[0-9]/",$_POST['pass']) ? "password must have numbers<br>" : "password valid number<br>") .
-    (!preg_match("/[!@#$%^&*()-_=+{};:,<.>]/",$_POST['pass']) ? "password must have special characters<br>" : "password valid special characters<br>");
-
-
-
-
-
-
-
-/*  connect to database    */
-
-
- $host = "localhost";
- $username = "root";
- $password = "";
- $dbname = "cookie";
- $con = mysqli_connect($host, $username, $password, $dbname);
- 
- if (!$con) {
-    echo "fail coonection";
- }
- else{
-     echo "connected to data successfully"."<br>";
- }
- 
-
-
-
-
-   /*    insert in  table  */ 
-
- $final = mysqli_query($con," INSERT INTO  users ( title,lname,email,`address`, `password` ) values ('$title','$last','$mail','$add','$pass') ");
-
-
- if (!$final) {
-    echo "No inserted data";
+        // Insert into table
+        $sql = "INSERT INTO users (title, lname, email, `password`) VALUES ('$title', '$last', '$mail', '$pass')";
+        // Use exec() because no results are returned
+        $conn->exec($sql);
+        echo "New record created successfully";
+    } catch(PDOException $e) {
+        echo $sql . "<br>" . $e->getMessage();
+    }
+    
+    $conn = null;
 }
-else{
-    echo "data inserted successfully "."<br>";
-}
-
-                                              
-
-
-
-}
-
 ?>
+
+

@@ -106,70 +106,61 @@ body {
 </div>
 </body>
 </html>
+
 <?php
 if(isset($_POST['submit'])){
-
-$title=$_POST['title'];
-$pass=$_POST['pass'];
-
-echo empty($_POST['title']) ? "title is required<br>" : (preg_match('/[a-zA-Z]/', $_POST['title']) ? "title is valid<br>" : "title is not valid<br>");
-echo empty($_POST['pass']) ? "password is required<br>" : 
-    (!preg_match("/[a-z]/",$_POST['pass']) ? "password must have lower<br>" : "password valid lower<br>") .
-    (!preg_match("/[A-Z]/",$_POST['pass']) ? "password must have upper<br>" : "password valid upper<br>") .
-    (!preg_match("/[0-9]/",$_POST['pass']) ? "password must have numbers<br>" : "password valid number<br>") .
-    (!preg_match("/[!@#$%^&*()-_=+{};:,<.>]/",$_POST['pass']) ? "password must have special characters<br>" : "password valid special characters<br>");
-
-
-
-/* connect to database   */
-
-
- $host = "localhost";
- $username = "root";
- $password = "";
- $dbname = "cookie";
- $con = mysqli_connect($host, $username, $password, $dbname);
- 
- if (!$con) {
-     echo "fail coonection";
- }
- else{
-     echo "connected to data successfully"."<br>";
- }
- 
- 
+    $title = $_POST['title'];
+    $pass = $_POST['pass'];
 
 
 
 
-          /*   get data from database     */
- 
-
- $final = mysqli_query($con," SELECT * FROM users WHERE title='$title' AND  password='$pass' ");
-
- if (!$final) {
-    echo "fail coonection";
-}
-else{
-    echo "get data from sql "."<br>";
-}
 
 
-if(mysqli_num_rows($final) > 0){
+    // Connect to the database
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "commarce_php";
 
-    $iti=mysqli_fetch_array($final);
-    
-    setcookie("usertitle",$iti['title'],time() + 60*60);
+    try {
+        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+
+        
+        // Use prepared statement to prevent SQL injection
+        $stmt = $conn->prepare("SELECT * FROM users WHERE title=:title AND password=:password");
+        $stmt->bindParam(':title', $title);
+        $stmt->bindParam(':password', $pass);
+        $stmt->execute();
+
+        // Check if any rows were returned
+        if ($stmt->rowCount() > 0) {
+            echo "Login successful<br>";
+
+            // Fetch and display the data
+            echo "<h2>User Data:</h2>";
+            echo "<ul>";
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+               
+                 
+    setcookie("userid",$row['user_id'],time() + 60*60,'/');
+    setcookie("usertitle",$row['title'],time() + 60*60,'/');
+    setcookie("useremail",$row['email'],time() + 60*60,'/');
+    setcookie("userrole",$row['role'],time() + 60*60,'/');
     
     header("location: base.php");
-     }else{
-        echo "fail coonection";
+            }
+            echo "</ul>";
+        } else {
+            echo "Invalid credentials";
+        }
+    } catch(PDOException $e) {
+        echo "Error: " . $e->getMessage();
     }
-
-
+    
+    // Close the database connection
+    $conn = null;
 }
-
-
-
-
 ?>
