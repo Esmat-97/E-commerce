@@ -31,15 +31,6 @@
         </li>
 
 
-        <li class="nav-item">
-          <a class="nav-link" href="logout.php">logout</a>
-        </li>
-
-
-        <li class="nav-item">
-          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-        </li>
-
 
         <?php
       $comming =$_COOKIE['userrole'];
@@ -78,6 +69,18 @@
       </ul>
      
     </div>
+<!-- rigth side -->
+  
+    <div class="btn-group dropstart">
+  <a type="button" class= "dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+    <img class="rounded-circle" src="image.jpg" width="35" />
+    </a>
+  <ul class="dropdown-menu">
+  <li><a class="dropdown-item" href="">Action</a></li>
+    <li><a class="dropdown-item" href="">Another action</a></li>
+    <li><a class="dropdown-item" href="">Something else here</a></li>
+  </ul>
+</div>
   </div>
 </nav>
 
