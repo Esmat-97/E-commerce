@@ -61,6 +61,7 @@ input[type="submit"]:hover {
 
 
 
+
 <?php
 if(isset($_POST['submit'])){
 
@@ -82,7 +83,7 @@ if(isset($_POST['submit'])){
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $dbname = "commarce_php"; // Add semicolon at the end
+    $dbname = "commarce_php"; 
 
     try {
         $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);

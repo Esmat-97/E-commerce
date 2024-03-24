@@ -19,44 +19,64 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
+
+
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="favorite.php">favorite</a>
         </li>
 
-      <?php
-      $comming =$_COOKIE['usertitle'];
 
-      if($comming == "mohamed"){
+        <li class="nav-item">
+          <a class="nav-link" href="logout.php">logout</a>
+        </li>
+
+
+        <li class="nav-item">
+          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+        </li>
+
+
+        <?php
+      $comming =$_COOKIE['userrole'];
+
+      if($comming === "admin"){
+
+      ?>
+       <?php
+      $comming =$_COOKIE['userrole'];
+
+      if($comming === "admin"){
 
       
       ?>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="addproducts.php">add products</a>
-        </li>
+    <div class="dropdown">
+  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+   admin list
+  </a>
 
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="addusers.php">add persons</a>
-        </li>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="#">Action</a></li>
+    <li><a class="dropdown-item" href="addusers.php">Another action</a></li>
+    <li><a class="dropdown-item" href="addproducts.php">Something else here</a></li>
+  </ul>
+</div>
 
 
         <?php
       }
       ?>
 
-        <li class="nav-item">
-          <a class="nav-link" href="logout.php">logout</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-        </li>
+
+        <?php
+      }
+      ?>
       </ul>
-      <form class="d-flex" role="search" action="show.php"  method="post">
-        <input class="form-control me-2" type="search" name="filter"  placeholder="Search....." aria-label="Search">
-        <button class="btn btn-outline-success" type="submit"  value="filter">filter</button>
-      </form>
+     
     </div>
   </div>
 </nav>
