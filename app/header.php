@@ -22,7 +22,7 @@
 
 
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link active" aria-current="page" href="../app/main.php">Home</a>
         </li>
 
 
@@ -46,14 +46,14 @@
       
       ?>
     <div class="dropdown">
-  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
    admin list
   </a>
 
   <ul class="dropdown-menu">
-    <li><a class="dropdown-item" href="#">Action</a></li>
-    <li><a class="dropdown-item" href="addusers.php">Another action</a></li>
-    <li><a class="dropdown-item" href="addproducts.php">Something else here</a></li>
+    <li><a class="dropdown-item" href="../admin/users.php">users</a></li>
+    <li><a class="dropdown-item" href="../admin/addusers.php">addusers</a></li>
+    <li><a class="dropdown-item" href="../admin/addproducts.php">addproducts</a></li>
   </ul>
 </div>
 
@@ -69,6 +69,7 @@
       </ul>
      
     </div>
+    
 <!-- rigth side -->
   
     <div class="btn-group dropstart">
@@ -78,7 +79,7 @@
   <ul class="dropdown-menu">
   <li><a class="dropdown-item" href="">Action</a></li>
     <li><a class="dropdown-item" href="">Another action</a></li>
-    <li><a class="dropdown-item" href="">Something else here</a></li>
+    <li><a class="dropdown-item" href="logout.php">logout</a></li>
   </ul>
 </div>
   </div>
