@@ -47,14 +47,20 @@ input[type="submit"]:hover {
 }
     </style>
 </head>
+
+<?php
+
+$id=$_COOKIE['userid'];
+
+?>
+
 <body>
     <form action="" method="post">
-<p> name<input type="text" name="name"  ></p>
+<p> name<input type="text" name="product_name"  ></p>
 <p> price<input type="text" name="price" ></p>
-<p>stock<input type="text" name="stock" ></p>
 <p>image<input type="text" name="image" ></p>
-<p>category<input type="text" name="category" ></p>
-<p> description<textarea   cols="20" rows="10"  name="description" ></textarea></p>
+<p>stock<input type="text" name="stock" ></p>
+<p>stock<input type="text" name="user_id" value="<?php echo $id; ?>" ></p>
 <input type="submit"  value="submit"  name="submit">
     </form>
 </body>
@@ -62,60 +68,38 @@ input[type="submit"]:hover {
 
 
 
-
 <?php
+
 if(isset($_POST['submit'])){
 
+    $product_name = $_POST['product_name'];
+    $price = $_POST['price'];
+    $stock = $_POST['stock'];
 
+    // Connect to the database
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "commerce_php";
 
-$a=$_POST['name'];
-$b=$_POST['price'];
-$c=$_POST['stock'];
-$d=$_POST['image'];
-$e=$_POST['category'];
-$f=$_POST['description'];
+    try {
+        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+        // Set the PDO error mode to exception
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+        // Insert into table
+        $sql = "INSERT INTO products (product_name, price, stock) VALUES ('$product_name', '$price', '$stock')";
+        // Use exec() because no results are returned
+        $conn->exec($sql);
+        echo "New record created successfully";
+    } catch(PDOException $e) {
+        echo $sql . "<br>" . $e->getMessage();
+    }
 
-
-
-
-/*  connect to database    */
-
-
- $host = "localhost";
- $username = "root";
- $password = "";
- $dbname = "cookie";
- $con = mysqli_connect($host, $username, $password, $dbname);
- 
- if (!$con) {
-    echo "fail coonection";
- }
- else{
-     echo "connected to data successfully"."<br>";
- }
- 
-
-
-
-
-   /*    insert in  table  */ 
-
- $final = mysqli_query($con," INSERT INTO  products (  `name`,price,`stock`,`image`, `category`, `description` ) values ('$a','$b','$c','$d','$e','$f') ");
-
-
- if (!$final) {
-    echo "No inserted data";
-}
-else{
-    echo "data inserted successfully "."<br>";
-}
-
-                                              
-
-
+    $conn = null;
 
 }
 
 ?>
+
 
