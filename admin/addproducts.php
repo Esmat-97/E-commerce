@@ -58,9 +58,9 @@ $id=$_COOKIE['userid'];
     <form action="" method="post">
 <p> name<input type="text" name="product_name"  ></p>
 <p> price<input type="text" name="price" ></p>
-<p>image<input type="text" name="image" ></p>
 <p>stock<input type="text" name="stock" ></p>
-<p>stock<input type="text" name="user_id" value="<?php echo $id; ?>" ></p>
+<p> image <input type="file" name="uploadfile"></p>
+<p>admin <input type="text" name="user_id" value="<?php echo $id; ?>" ></p>
 <input type="submit"  value="submit"  name="submit">
     </form>
 </body>
@@ -75,12 +75,17 @@ if(isset($_POST['submit'])){
     $product_name = $_POST['product_name'];
     $price = $_POST['price'];
     $stock = $_POST['stock'];
+    $image = $_POST['uploadfile'];
+    $user_id = $_POST['user_id'];
+
+
+    echo $image ;
 
     // Connect to the database
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $dbname = "commerce_php";
+    $dbname = "commarce_php";
 
     try {
         $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
@@ -88,7 +93,7 @@ if(isset($_POST['submit'])){
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         // Insert into table
-        $sql = "INSERT INTO products (product_name, price, stock) VALUES ('$product_name', '$price', '$stock')";
+        $sql = "INSERT INTO products (product_name, price, stock, image , user_id) VALUES ('$product_name', '$price', '$stock' ,'$image', $user_id)";
         // Use exec() because no results are returned
         $conn->exec($sql);
         echo "New record created successfully";

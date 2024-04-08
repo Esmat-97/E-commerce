@@ -24,13 +24,13 @@
     include '../app/header.php';
 
 
-    // Connect to the database
     $servername = "localhost";
     $username = "root";
     $password = "";
     $dbname = "commarce_php";
 
     try {
+
         $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
@@ -73,7 +73,6 @@
     $conn = null;
 
 
-
 ?>
 
 </tbody>
@@ -82,5 +81,7 @@
 
 
 <?php     include '../app/footer.php'; ?>
+
+
 </body>
 </html>
