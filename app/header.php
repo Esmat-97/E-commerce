@@ -26,20 +26,30 @@
         </li>
 
 
+        <?php
+      $comming =$_COOKIE['userrole'];
+      ?>
+
+
+<?php
+
+if( ! $comming){
+
+
+?>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="favorite.php">favorite</a>
+          <a class="nav-link active" aria-current="page" href="log.php">login</a>
         </li>
 
 
+  <?php
 
-        <?php
-      $comming =$_COOKIE['userrole'];
+}
+?>
+      
 
-      if($comming === "admin"){
 
-      ?>
-       <?php
-      $comming =$_COOKIE['userrole'];
+         <?php
 
       if($comming === "admin"){
 
@@ -63,9 +73,7 @@
       ?>
 
 
-        <?php
-      }
-      ?>
+      
       </ul>
      
     </div>
@@ -77,9 +85,16 @@
     <img class="rounded-circle" src="image.jpg" width="35" />
     </a>
   <ul class="dropdown-menu">
-  <li><a class="dropdown-item" href="">Action</a></li>
+    <?php
+        $comming =$_COOKIE['userrole'];
+  if($comming ){
+    ?>
     <li><a class="dropdown-item" href="myprofile.php">My profile</a></li>
     <li><a class="dropdown-item" href="logout.php">logout</a></li>
+    
+    <?php
+  }
+  ?>
   </ul>
 </div>
   </div>
