@@ -1,74 +1,10 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Simple Dashboard</title>
-    <style>
-
-
-    </style>
-</head>
-<body>
 
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" href="../css/dashboard.css">
     <title>Simple Dashboard</title>
    
-    <style>
-
-.dashboard {
-    display: flex;
-    height: 100vh;
-}
-
-.sidebar {
-    background-color: #333;
-    color: #fff;
-    width: 200px;
-    padding: 20px;
-}
-
-.sidebar-item {
-    margin-bottom: 10px;
-}
-
-.sidebar-item a {
-    color: #fff;
-    text-decoration: none;
-}
-
-.content {
-    padding: 20px;
-    flex: 1;
-}
-
-.content h1 {
-    margin-top: 0;
-}
-
-.counters {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-    width: 200px;
-    flex-wrap:wrap;
-}
-
-.counter {
-    text-align: center;
-}
-
-.counter h2 {
-    margin-bottom: 5px;
-}
-    </style>
 </head>
 <body>
     <div class="dashboard">
@@ -87,29 +23,181 @@
             <h1>Welcome to the Dashboard</h1>
             <p>This is a simple dashboard with a sidebar and content area.</p>
             <div class="counters">
-                <div class="counter">
+
+
+
+<?php
+   
+   
+   $servername = "localhost";
+   $username = "root";
+   $password = "";
+   $dbname = "commarce_php";
+
+   try {
+
+    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+       $stmt = $conn->prepare(" SELECT COUNT(product_name) FROM products;");
+   
+       $stmt->execute();
+
+       if ($stmt->rowCount() > 0) {
+         
+           while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+           
+              ?>
+
+               <div class="counter">
+                    <h2>products:</h2>
+                    <p><?php echo $row['COUNT(product_name)'] ?> </p>
+                </div>
+
+                
+                <?php
+   
+                }
+
+} else {
+echo "Empty rows";
+}
+} catch(PDOException $e) {
+    echo "Error: " . $e->getMessage();
+    }
+    
+// Close the database connection
+$conn = null;
+
+
+
+
+/* USERS  */
+
+
+   try {
+
+    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+       $stmt = $conn->prepare(" SELECT COUNT(email) FROM users;");
+   
+       $stmt->execute();
+
+       if ($stmt->rowCount() > 0) {
+         
+           while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+           
+              ?>
+
+               <div class="counter">
                     <h2>Users:</h2>
-                    <p>100</p>
+                    <p><?php echo $row['COUNT(email)'] ?> </p>
                 </div>
 
-                <div class="counter">
-                    <h2>Products:</h2>
-                    <p>500</p>
+                
+                <?php
+   
+                }
+
+} else {
+echo "Empty rows";
+}
+} catch(PDOException $e) {
+    echo "Error: " . $e->getMessage();
+    }
+    
+// Close the database connection
+$conn = null;
+
+
+
+
+
+
+/* admin */
+
+try {
+
+    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+       $stmt = $conn->prepare(" SELECT COUNT(email) FROM users WHERE role='admin';");
+   
+       $stmt->execute();
+
+       if ($stmt->rowCount() > 0) {
+         
+           while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+           
+              ?>
+
+               <div class="counter">
+                    <h2>Admin:</h2>
+                    <p><?php echo $row['COUNT(email)'] ?> </p>
                 </div>
 
+                
+                <?php
+   
+                }
 
-                <div class="counter">
-                    <h2>admins:</h2>
-                    <p>500</p>
+} else {
+echo "Empty rows";
+}
+} catch(PDOException $e) {
+    echo "Error: " . $e->getMessage();
+    }
+    
+// Close the database connection
+$conn = null;
+
+
+
+
+
+
+/* customers */
+
+try {
+
+    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+       $stmt = $conn->prepare(" SELECT COUNT(email) FROM users WHERE role='customer';");
+   
+       $stmt->execute();
+
+       if ($stmt->rowCount() > 0) {
+         
+           while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+           
+              ?>
+
+               <div class="counter">
+                    <h2>Customers:</h2>
+                    <p><?php echo $row['COUNT(email)'] ?> </p>
                 </div>
 
+                
+                <?php
+   
+                }
+
+} else {
+echo "Empty rows";
+}
+} catch(PDOException $e) {
+    echo "Error: " . $e->getMessage();
+    }
+    
+// Close the database connection
+$conn = null;
+
+?>
 
 
-                <div class="counter">
-                    <h2>customers:</h2>
-                    <p>500</p>
-                </div>
-
+               
             </div>
         </div>
     </div>

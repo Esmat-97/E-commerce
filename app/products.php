@@ -33,7 +33,6 @@
             
                 ?>
 
-
   <div class="col">
     <div class="card w-100 ">
       <img src="../imgs/<?php echo $row['image'] ?>" class="card-img-top w-30 " >
