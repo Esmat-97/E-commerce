@@ -9,7 +9,6 @@
 
 <?php
    
-   
     $servername = "localhost";
     $username = "root";
     $password = "";
@@ -39,6 +38,10 @@
       <div class="card-body">
         <h5 class="card-title"><?php echo $row['product_name'] ?></h5>
         <p class="card-text"> <?php echo $row['price']  ?></p>
+       <form action="" method="post">
+        <input type="hidden" name="protodel" value="<?php echo $row['product_name']  ?>">
+        <input type="submit" value="delete" name="delpro">
+       </form>
       </div>
     </div>
   </div>
@@ -59,6 +62,27 @@ echo "Error: " . $e->getMessage();
 $conn = null;
 
 
+
+
+/* delete */
+if (isset($_POST['delpro'])) {
+  $del = $_POST['protodel'];
+  try {
+      $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+      $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+      $stmt = $conn->prepare("DELETE FROM products WHERE product_name=:del");
+      $stmt->bindParam(':del', $del);
+      $stmt->execute();
+
+      echo "Product deleted successfully";
+  } catch (PDOException $e) {
+      echo "Error: " . $e->getMessage();
+  }
+
+  // Close the database connection
+  $conn = null;
+}
 ?>
 
 </body>
