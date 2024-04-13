@@ -24,7 +24,6 @@
     
         $stmt->execute();
 
-
         if ($stmt->rowCount() > 0) {
           
      echo  " <div class='row row-cols-1 row-cols-md-3 g-4'>" ;

@@ -14,6 +14,7 @@
                     <th scope="col">First</th>
                     <th scope="col">Last</th>
                     <th scope="col">email</th>
+                    <th scope="col">delete</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -33,54 +34,46 @@
 
         $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-
-        
-        // Use prepared statement to prevent SQL injection
+    
         $stmt = $conn->prepare("SELECT * FROM users ");
     
         $stmt->execute();
 
-        // Check if any rows were returned
         if ($stmt->rowCount() > 0) {
-          
           
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             
                 ?>
-               
                   <tr>
-                 
                     <td><?php echo $row['title'] ?></td>
                     <td><?php echo $row['lname'] ?></td>
                     <td><?php echo $row['email'] ?></td>
+                    <td> 
+                      <form action="" method="post">
+                        <input type="hidden" name="usertodel" value="<?php echo $row['email'] ?>">
+                        <input type="submit" value="delete" name="deluser">
+                      </form>
+                    </td>
                   </tr>
-                 
-             
-
               <?php
-    
-            }
-            echo "</ul>";
-        } else {
-            echo "Invalid credentials";
-        }
-    } catch(PDOException $e) {
-        echo "Error: " . $e->getMessage();
+            }  
     }
     
-    // Close the database connection
+  }catch(PDOException $e) {
+        echo "Error: " . $e->getMessage();
+    }
+
     $conn = null;
 
+?>    
 
-?>
 
 </tbody>
 </table>
 
 
-
 <?php     include '../app/footer.php'; ?>
+<?php     include '../operations/delusers.php'; ?>
 
 
 </body>
