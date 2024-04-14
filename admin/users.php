@@ -73,7 +73,7 @@
 
 
 <?php     include '../app/footer.php'; ?>
-<?php     include '../operations/delusers.php'; ?>
+
 
 
 </body>
