@@ -8,17 +8,25 @@
 </head>
 </head>
 <body>
+
+
+<?php
+
+$commer1=$_COOKIE['usertitle'];
+$commer2=$_COOKIE['useremail'];
+
+?>
 <form class="row g-3" action="" method="post">
 
 
 <div class="col-md-6">
     <label for="inputPassword4" class="form-label">title</label>
-    <input type="text" class="form-control"  name="title">
+    <input type="text" class="form-control"  name="title" value="<?php echo $commer1 ;?>">
   </div>
 
   <div class="col-md-6">
     <label for="inputEmail4" class="form-label">Email</label>
-    <input type="email" class="form-control" name="email">
+    <input type="email" class="form-control" name="email" value="<?php echo $commer2 ;?>">
   </div>
 
   <div class="col-12">
