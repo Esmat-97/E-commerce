@@ -9,6 +9,9 @@
 <body>
 
 <?php
+
+$comer=$_COOKIE['userrole'];
+
    
     $servername = "localhost";
     $username = "root";
@@ -38,15 +41,22 @@
       <div class="card-body">
         <h5 class="card-title"><?php echo $row['product_name'] ?></h5>
         <p class="card-text">price : <?php echo $row['price']  ?></p>
+     
+        <?php
+   if( $comer === 'admin'){
+    ?>
        <form action="" method="post">
         <input type="hidden" name="protodel" value="<?php echo $row['product_name']  ?>">
         <input type="submit" value="delete" name="delpro">
        </form>
+       <?php
+   }
+   ?>
       </div>
     </div>
   </div>
 
-  
+
 
 <?php
     
