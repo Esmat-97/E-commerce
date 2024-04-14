@@ -2,10 +2,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
 </head>
 <body>
 
@@ -35,12 +34,10 @@
 
 if( ! $comming){
 
-
 ?>
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="log.php">login</a>
         </li>
-
 
   <?php
 
@@ -49,11 +46,26 @@ if( ! $comming){
       
 
 
-         <?php
 
+      <?php
+
+if( $comming){
+
+?>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="contact.php">contact us</a>
+        </li>
+
+  <?php
+
+}
+?>
+
+
+
+         <?php
       if($comming === "admin"){
 
-      
       ?>
     <div class="dropdown">
         <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -67,8 +79,6 @@ if( ! $comming){
     <li><a class="dropdown-item" href="../admin/dashboard.php">dashboard</a></li>
   </ul>
 </div>
-
-
         <?php
       }
       ?>

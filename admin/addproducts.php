@@ -87,6 +87,7 @@ if(isset($_POST['submit'])){
     $password = "";
     $dbname = "commarce_php";
 
+    
     try {
         $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
         // Set the PDO error mode to exception
