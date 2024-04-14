@@ -1,11 +1,16 @@
-
-  select * from users;
+-- drop table users;
+  select * from users;	
 
 
  SET SQL_SAFE_UPDATES = 0;
 
 -- drop table products;
 select * from products;
+
+
+
+drop table messages;
+select * from messages;
 
 
 update users set role='admin' where user_id=1;
@@ -31,3 +36,11 @@ CREATE TABLE IF NOT EXISTS products (
 );
 
 
+CREATE TABLE IF NOT EXISTS messages (
+	title  VARCHAR(255),
+	email varchar(255),
+       message varchar(255) unique
+);
+
+
+ 
