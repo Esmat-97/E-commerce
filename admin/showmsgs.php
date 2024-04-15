@@ -77,6 +77,7 @@ $conn = null;
 <?php
 
 include '../app/footer.php';
+include '../operations/delmsgs.php';
 
 ?>
 </body>

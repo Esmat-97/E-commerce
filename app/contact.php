@@ -55,7 +55,6 @@ if(isset($_POST['addmsg'])){
     $msg=$_POST['message'];
 
 
-
     $servername = "localhost";
     $username = "root";
     $password = "";
