@@ -15,6 +15,7 @@
                     <th scope="col">Last</th>
                     <th scope="col">email</th>
                     <th scope="col">delete</th>
+                    <th scope="col">show more</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -49,12 +50,28 @@
                     <td><?php echo $row['lname'] ?></td>
                     <td><?php echo $row['email'] ?></td>
                     <td> 
+
                       <form action="" method="post">
                         <input type="hidden" name="usertodel" value="<?php echo $row['email'] ?>">
                         <input type="submit" value="delete" name="deluser">
                       </form>
+                                
+                    </td>
+
+
+
+                    <td>
+
+                    <form action="../operations/showuser.php" method="post">
+                        <input type="hidden" name="usertoshow" value="<?php echo $row['email'] ?>">
+                        <input type="submit" value="show more" name="showuser">
+                      </form>
+
                     </td>
                   </tr>
+
+
+                  <?php include '../operations/showuser.php' ?>
               <?php
             }  
     }
