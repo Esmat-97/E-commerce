@@ -51,14 +51,17 @@ $comer=$_COOKIE['userrole'];
         <input type="submit" value="delete" name="delpro">
        </form>
 
-       <form action="../operations/showpro.php" method="post">
+      
+       <?php
+   }
+   ?>
+
+
+<form action="../operations/showpro.php" method="post">
         <input type="hidden" name="protoshow" value="<?php echo $row['product_name']  ?>">
         <input type="submit" value="show more" name="showpro">
        </form>
 
-       <?php
-   }
-   ?>
       </div>
     </div>
   </div>
