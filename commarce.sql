@@ -37,10 +37,22 @@ CREATE TABLE IF NOT EXISTS products (
 
 
 CREATE TABLE IF NOT EXISTS messages (
-	title  VARCHAR(255),
-	email varchar(255),
-       message varchar(255) unique
+    message_id int AUTO_INCREMENT PRIMARY KEY,
+    user_id int,
+     message_date datetime,
+       message varchar(255) unique,
+       foreign key (user_id) references users (user_id)
 );
 
+
+CREATE TABLE IF NOT EXISTS orders (
+  order_id int AUTO_INCREMENT PRIMARY KEY ,
+  user_id int,
+  product_id int ,
+  order_date datetime,
+status enum ('accepted','pending') default 'pending',
+foreign key (user_id) references users (user_id),
+foreign key (product_id) references products (product_id)
+);
 
  

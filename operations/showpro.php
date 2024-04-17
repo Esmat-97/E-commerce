@@ -52,6 +52,8 @@
         <h5 class="card-title"> <?php echo $row['product_name']; ?></h5>
         <p class="card-text"> price : <?php echo $row['price']; ?></p>
         <p class="card-text">available numbers :<?php echo $row['stock']; ?> </p>
+
+        </form>
       </div>
     </div>
 
