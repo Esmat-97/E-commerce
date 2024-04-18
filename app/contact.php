@@ -12,22 +12,17 @@
 
 <?php
 
-$commer1=$_COOKIE['usertitle'];
-$commer2=$_COOKIE['useremail'];
+$commer1=$_COOKIE['userid'];
+
 
 ?>
 <form class="row g-3" action="" method="post">
 
 
-<div class="col-md-6">
-    <label for="inputPassword4" class="form-label">title</label>
-    <input type="text" class="form-control"  name="title" value="<?php echo $commer1 ;?>">
+<div class="col-12">
+    <input type="hidden" class="form-control"   name="user_id" value="<?php echo $commer1; ?>">
   </div>
 
-  <div class="col-md-6">
-    <label for="inputEmail4" class="form-label">Email</label>
-    <input type="email" class="form-control" name="email" value="<?php echo $commer2 ;?>">
-  </div>
 
   <div class="col-12">
     <label for="inputAddress" class="form-label">message</label>
@@ -50,10 +45,10 @@ $commer2=$_COOKIE['useremail'];
 
 if(isset($_POST['addmsg'])){
 
-    $title=$_POST['title'];
-    $mail=$_POST['email'];
+  
+  $user_id=$_POST['user_id'];
     $msg=$_POST['message'];
-
+    $msg_date = date("Y-m-d H:i:s");
 
     $servername = "localhost";
     $username = "root";
@@ -67,7 +62,7 @@ if(isset($_POST['addmsg'])){
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         // Insert into table
-        $sql = "INSERT INTO messages (title, email, message) VALUES ('$title', '$mail','$msg')";
+        $sql = "INSERT INTO messages (user_id ,message_date, message) VALUES ('$user_id','$msg_date','$msg')";
         // Use exec() because no results are returned
         $conn->exec($sql);
         echo "New record created successfully";
