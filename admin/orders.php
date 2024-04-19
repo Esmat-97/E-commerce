@@ -49,11 +49,11 @@
             
                 ?>
                   <tr>
-                    <td><?php echo $row['title'] ?></td>
-                    <td><?php echo $row['email'] ?></td>
-                    <td><?php echo $row['order_date'] ?></td>
-                    <td><?php echo $row['status'] ?></td>
-                    <td><?php echo $row['product_name'] ?></td>
+                    <td><?php echo $row['title']; ?></td>
+                    <td><?php echo $row['email'] ; ?></td>
+                    <td><?php echo $row['order_date'] ;?></td>
+                    <td><?php echo $row['status'] ;?></td>
+                    <td><?php echo $row['product_name']; ?></td>
                     <td>
                       <form action="" method="post">
                         <input type="hidden" name="idtoaccept" value="<?php echo $row['order_id'] ;?>">
@@ -87,7 +87,6 @@
 if(isset($_POST['accept'])){
 
 $id=$_POST['idtoaccept'];
-
 
 try {
   $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);

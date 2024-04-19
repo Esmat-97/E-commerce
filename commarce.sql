@@ -13,6 +13,12 @@ drop table messages;
 select * from messages;
 
 
+
+drop table orders;
+select * from orders;	
+
+
+
 update users set role='admin' where user_id=1;
 
 
@@ -44,7 +50,6 @@ CREATE TABLE IF NOT EXISTS messages (
        foreign key (user_id) references users (user_id)
 );
 
-
 CREATE TABLE IF NOT EXISTS orders (
   order_id int AUTO_INCREMENT PRIMARY KEY ,
   user_id int,
@@ -55,4 +60,11 @@ foreign key (user_id) references users (user_id),
 foreign key (product_id) references products (product_id)
 );
 
- 
+ CREATE TABLE IF NOT EXISTS reviews (
+  review_id int AUTO_INCREMENT PRIMARY KEY ,
+  user_id int,
+  review_date datetime,
+  review varchar(255) unique,
+status enum ('verified','pending') default 'pending',
+foreign key (user_id) references users (user_id)
+);

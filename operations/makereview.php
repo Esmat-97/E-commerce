@@ -2,13 +2,12 @@
 
 <?php
 
-if(isset($_POST['cart'])){
+if(isset($_POST['review'])){
 
       // Get form data
       $user = $_POST['user_id'];
-      $product = $_POST['product_id'];
-      $order_date = date("Y-m-d H:i:s");
-
+      $review=$_POST['review'];
+      $review_date = date("Y-m-d H:i:s");
 
     try {
       
@@ -17,17 +16,15 @@ if(isset($_POST['cart'])){
     $password = "";
     $dbname = "commarce_php";
 
-
-   
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $stmt = $conn->prepare("INSERT INTO orders (user_id, product_id, order_date) VALUES (:user, :product, :order_date)");
+        $stmt = $conn->prepare("INSERT INTO reviews (user_id, review_date ,review) VALUES (:user, :product, :review_date)");
 
         // Bind parameters
         $stmt->bindParam(':user', $user);
-        $stmt->bindParam(':product', $product);
-        $stmt->bindParam(':order_date', $order_date);
+        $stmt->bindParam(':product', $review_date);
+        $stmt->bindParam(':review_date', $review);
 
         // Execute the statement
         $stmt->execute();

@@ -44,6 +44,7 @@
         $current1=$_COOKIE['usertitle'];
         $current2=$_COOKIE['useremail'];
         $current3=$_COOKIE['userrole'];
+        $current4=$_COOKIE['userid'];
        
  ?>
         <form>
@@ -67,6 +68,22 @@
                      
  
 </form>
+
+
+<form action="" method="post">
+    <input type="hidden" name="user_id" value="<?php echo $current4; ?>">
+
+<div class="mb-3">
+  <label for="exampleFormControlTextarea1" class="form-label">Add review</label>
+  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="addreview"></textarea>
+</div>
+
+<input type="submit" value="send" name="review">
+</form>
+
+
+
+<?php include '../operations/makereview.php'; ?>
         
     </div>
   
