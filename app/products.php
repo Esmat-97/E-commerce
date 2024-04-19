@@ -57,16 +57,26 @@ $comer=$_COOKIE['userrole'];
    ?>
 
 
-<form action="../operations/showpro.php" method="post">
+      <form action="../operations/showpro.php" method="post">
         <input type="hidden" name="protoshow" value="<?php echo $row['product_name']  ?>">
         <input type="submit" value="show more" name="showpro">
        </form>
 
+
+      <form action="" method="post">
+    <input type="hidden" name="user_id" value="<?php echo $comming; ?>">
+    <input type="hidden" name="product_id" value="<?php echo $row['product_id']; ?>">
+    <input type="submit" name="cart" value="Add to Cart">
+   </form>
+
+
+       <?php include '../operations/makeorder.php'; ?>  
+ 
+       <?php include '../operations/showpro.php' ?>
       </div>
     </div>
   </div>
-
-  <?php include '../operations/showpro.php' ?>
+ 
 
 
 <?php

@@ -10,6 +10,7 @@
 
 <?php
 
+$comming=$_COOKIE['userid'];
 
     
    if(isset($_POST['showpro'])){
@@ -53,7 +54,6 @@
         <p class="card-text"> price : <?php echo $row['price']; ?></p>
         <p class="card-text">available numbers :<?php echo $row['stock']; ?> </p>
 
-        </form>
       </div>
     </div>
 
@@ -85,8 +85,10 @@ $conn = null;
 ?>
 
 </body>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
 
 </html>

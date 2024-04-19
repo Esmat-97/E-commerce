@@ -24,7 +24,9 @@ include '../app/header.php';
         $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $stmt = $conn->prepare("SELECT * FROM messages ");
+        $stmt = $conn->prepare("SELECT * FROM messages 
+        INNER JOIN users ON messages.user_id = users.user_id;
+        ");
     
         $stmt->execute();
 
@@ -40,6 +42,7 @@ include '../app/header.php';
     <div class="card w-100">
       <div class="card-body">
         <p class="card-text"> <?php echo $row['message']  ?></p>
+        <p class="card-text"> <?php echo $row['message_date']  ?></p>
      
 
        <form action="" method="post">

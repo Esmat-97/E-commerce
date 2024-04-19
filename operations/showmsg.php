@@ -28,7 +28,9 @@
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 
-        $stmt = $conn->prepare("SELECT * FROM messages WHERE  message=:pro ");
+        $stmt = $conn->prepare("SELECT * FROM messages 
+        INNER JOIN users ON messages.user_id = users.user_id
+     where  message=:pro ;");
     
         $stmt->bindParam(':pro', $pro);
 
@@ -51,6 +53,7 @@
       <div class="card-body">
         <h5 class="card-title"> <?php echo $row['title']; ?></h5>
         <p class="card-text"> Email: <?php echo $row['email']; ?></p>
+        <p class="card-text"> date: <?php echo $row['message_date']; ?></p>
         <p class="card-text"> the msg :<?php echo $row['message']; ?> </p>
       </div>
     </div>
