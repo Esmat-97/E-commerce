@@ -4,9 +4,8 @@
 
 if(isset($_POST['review'])){
 
-      // Get form data
       $user = $_POST['user_id'];
-      $review=$_POST['review'];
+      $review=$_POST['addreview'];
       $review_date = date("Y-m-d H:i:s");
 
     try {
@@ -19,7 +18,7 @@ if(isset($_POST['review'])){
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $stmt = $conn->prepare("INSERT INTO reviews (user_id, review_date ,review) VALUES (:user, :product, :review_date)");
+ $stmt = $conn->prepare("INSERT INTO reviews (user_id, review_date ,review) VALUES (:user, :product, :review_date)");
 
         // Bind parameters
         $stmt->bindParam(':user', $user);
