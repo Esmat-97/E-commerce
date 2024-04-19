@@ -57,9 +57,7 @@
                       </form>
                                 
                     </td>
-
-
-
+                    
                     <td>
 
                     <form action="../operations/showuser.php" method="post">

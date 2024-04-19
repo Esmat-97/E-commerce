@@ -16,7 +16,7 @@
                     <th scope="col">date</th>
                     <th scope="col">status</th>
                     <th scope="col">product</th>
-                
+                    <th scope="col">accept</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -54,10 +54,14 @@
                     <td><?php echo $row['order_date'] ?></td>
                     <td><?php echo $row['status'] ?></td>
                     <td><?php echo $row['product_name'] ?></td>
+                    <td>
+                      <form action="" method="post">
+                        <input type="hidden" name="idtoaccept" value="<?php echo $row['order_id'] ;?>">
+                        <input type="submit" name="accept" value="accept">
+                      </form>
+                    </td>
                   </tr>
 
-
-        
               <?php
             }  
     }
@@ -78,7 +82,31 @@
 <?php     include '../app/footer.php'; ?>
 
 
+<?php
 
+if(isset($_POST['accept'])){
+
+$id=$_POST['idtoaccept'];
+
+
+try {
+  $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+  $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+
+
+  // Insert into table
+  $sql = "UPDATE orders set status='accepted' where order_id= '$id';";
+  // Use exec() because no results are returned
+  $conn->exec($sql);
+  echo "New record created successfully";
+} catch(PDOException $e) {
+  echo $sql . "<br>" . $e->getMessage();
+}
+
+$conn = null;
+}
+?>
 
 </body>
 </html>
