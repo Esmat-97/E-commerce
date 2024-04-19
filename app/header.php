@@ -75,6 +75,7 @@ if( $comming){
   <ul class="dropdown-menu">
     <li><a class="dropdown-item" href="../admin/users.php">users</a></li>
     <li><a class="dropdown-item" href="../admin/msgs.php">msgs</a></li>
+    <li><a class="dropdown-item" href="../admin/orders.php">orders</a></li>
     <li><a class="dropdown-item" href="../admin/addusers.php">addusers</a></li>
     <li><a class="dropdown-item" href="../admin/addproducts.php">addproducts</a></li>
     <li><a class="dropdown-item" href="../admin/dashboard.php">dashboard</a></li>
