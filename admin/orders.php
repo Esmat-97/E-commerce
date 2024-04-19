@@ -93,8 +93,6 @@ try {
   $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
   $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-
-
   // Insert into table
   $sql = "UPDATE orders set status='accepted' where order_id= '$id';";
   // Use exec() because no results are returned
