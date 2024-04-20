@@ -15,6 +15,8 @@
                     <th scope="col">email</th>
                     <th scope="col">review</th>
                     <th scope="col">review_date</th>
+                    <th scope="col">status</th>
+                    <th scope="col">delete</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -51,6 +53,12 @@
                     <td><?php echo $row['review'] ?></td> 
                     <td><?php echo $row['review_date'] ?></td> 
                     <td><?php echo $row['status'] ?></td> 
+                    <td>
+                      <form action="" method="post">
+                     <input type="hidden" name="idtoverify" value="<?php echo $row['review_id'] ;?>">
+                     <input type="submit" value="verify" name="verify">
+                      </form>
+                    </td>
                   </tr>
 
 
@@ -76,6 +84,28 @@
 <?php     include '../app/footer.php'; ?>
 
 
+<?php
+
+if(isset($_POST['verify'])){
+
+$id=$_POST['idtoverify'];
+
+try {
+  $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+  $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+  // Insert into table
+  $sql = "UPDATE reviews set status='verified' where review_id= '$id';";
+  // Use exec() because no results are returned
+  $conn->exec($sql);
+  echo "New record created successfully";
+} catch(PDOException $e) {
+  echo $sql . "<br>" . $e->getMessage();
+}
+
+$conn = null;
+}
+?>
 
 
 </body>
