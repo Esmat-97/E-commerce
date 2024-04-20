@@ -12,8 +12,8 @@
                 <thead>
                   <tr>
                     <th scope="col">First</th>
-                    <th scope="col">Last</th>
                     <th scope="col">email</th>
+                    <th scope="col">role</th>
                     <th scope="col">delete</th>
                     <th scope="col">show more</th>
                   </tr>
@@ -47,8 +47,8 @@
                 ?>
                   <tr>
                     <td><?php echo $row['title'] ?></td>
-                    <td><?php echo $row['lname'] ?></td>
                     <td><?php echo $row['email'] ?></td>
+                    <td><?php echo $row['role'] ?></td>
                     <td> 
 
                       <form action="" method="post">

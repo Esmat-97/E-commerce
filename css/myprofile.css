@@ -1,0 +1,23 @@
+
+body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+      #main  img{
+            width: 150px;
+            height: 150px;
+        }
+     
+        #main {
+            margin: 15px;
+        }
+        #main h2 {
+            margin-top: 0;
+        }
+        #main p {
+            margin-bottom: 10px;
+        }
+        

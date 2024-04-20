@@ -40,8 +40,8 @@ $comer=$_COOKIE['userrole'];
     <div class="card w-100 ">
       <img src="../imgs/<?php echo $row['image'] ?>" class="card-img-top w-20 h-20" style='width: 150px; heigth: 150px;'>
       <div class="card-body">
-        <h5 class="card-title"><?php echo $row['product_name'] ?></h5>
-        <p class="card-text">price : <?php echo $row['price']  ?></p>
+        <h5 class="card-title"><?php echo $row['product_name']; ?></h5>
+        <p class="card-text">price : <?php echo $row['price'] ; ?> LE</p>
      
         <?php
    if( $comer === 'admin'){
