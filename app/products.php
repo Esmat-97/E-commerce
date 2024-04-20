@@ -62,6 +62,9 @@ $comer=$_COOKIE['userrole'];
         <input type="submit" value="show more" name="showpro">
        </form>
 
+<?php
+       if( $comer === 'customer'){
+   ?>     
 
       <form action="" method="post">
     <input type="hidden" name="user_id" value="<?php echo $comming; ?>">
@@ -69,6 +72,9 @@ $comer=$_COOKIE['userrole'];
     <input type="submit" name="cart" value="Add to Cart">
    </form>
 
+   <?php
+       }
+   ?>
 
        <?php include '../operations/makeorder.php'; ?>  
  
