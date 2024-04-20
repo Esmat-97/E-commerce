@@ -63,7 +63,7 @@ $comer=$_COOKIE['userrole'];
        </form>
 
 <?php
-       if( $comer === 'customer'){
+       if( $comer){
    ?>     
 
       <form action="" method="post">
@@ -76,9 +76,13 @@ $comer=$_COOKIE['userrole'];
        }
    ?>
 
-       <?php include '../operations/makeorder.php'; ?>  
+
+     
+<?php include '../operations/makeorder.php'; ?>  
  
-       <?php include '../operations/showpro.php' ?>
+ <?php include '../operations/showpro.php'; ?>
+ 
+
       </div>
     </div>
   </div>
@@ -103,9 +107,10 @@ $conn = null;
 
 ?>
 
+<?php include '../operations/delproducts.php'; ?>
 </body>
 
 
-<?php include '../operations/delproducts.php' ?>
+
 
 </html>
