@@ -309,6 +309,83 @@ echo "Empty rows";
     
 // Close the database connection
 $conn = null;
+
+
+
+
+
+try {
+
+    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+       $stmt = $conn->prepare(" SELECT COUNT(review_date) FROM  reviews where status='pending'; ");
+   
+       $stmt->execute();
+
+       if ($stmt->rowCount() > 0) {
+         
+           while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+           
+              ?>
+
+               <div class="counter" style="background-color:BurlyWood;">
+                    <h2>pending reviews:</h2>
+                    <p><?php echo $row['COUNT(review_date)'] ?> </p>
+                </div>
+
+                
+                <?php
+   
+                }
+
+} else {
+echo "Empty rows";
+}
+} catch(PDOException $e) {
+    echo "Error: " . $e->getMessage();
+    }
+    
+// Close the database connection
+$conn = null;
+
+
+
+
+try {
+
+    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+       $stmt = $conn->prepare(" SELECT COUNT(review_date) FROM reviews where status='verified'; ");
+   
+       $stmt->execute();
+
+       if ($stmt->rowCount() > 0) {
+         
+           while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+           
+              ?>
+
+               <div class="counter" style="background-color:BurlyWood;">
+                    <h2>verified reviews:</h2>
+                    <p><?php echo $row['COUNT(review_date)'] ?> </p>
+                </div>
+
+                
+                <?php
+   
+                }
+
+} else {
+echo "Empty rows";
+}
+} catch(PDOException $e) {
+    echo "Error: " . $e->getMessage();
+    }
+    
+// Close the database connection
+$conn = null;
 ?>
 
 
