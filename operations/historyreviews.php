@@ -7,6 +7,7 @@
                     <th scope="col">date</th>
                     <th scope="col">review</th>
                     <th scope="col">status</th>
+                    <th scope="col">delete</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -38,9 +39,15 @@
                     <td><?php echo $row['review_date'] ?></td>
                     <td><?php echo $row['review'] ?></td>
                     <td><?php echo $row['status'] ?></td>
-               
+               <td>
+               <form action="" method="post">
+        <input type="hidden" name="reviewtodel" value="<?php echo $row['review_id'] ; ?>">
+        <input type="submit" value="delete" name="delreview">
+       </form>
+               </td>
                   </tr>
 
+                  <?php include '../operations/delreviews.php'; ?>
               <?php
             }  
     }

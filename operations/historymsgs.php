@@ -36,8 +36,15 @@
                   <tr>
                     <td><?php echo $row['message_date'] ?></td>
                     <td><?php echo $row['message'] ?></td>
-               
+               <td>
+        <form action="" method="post">
+        <input type="hidden" name="msgtodel" value="<?php echo $row['message']  ?>">
+        <input type="submit" value="delete" name="delmsg">
+       </form>
+               </td>
                   </tr>
+
+                  <?php include '../operations/delmsgs.php'; ?>
 
               <?php
             }  

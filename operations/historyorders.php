@@ -6,6 +6,7 @@
                   <tr>
                     <th scope="col">date</th>
                     <th scope="col">status</th>
+                    <th scope="col">delete</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -36,8 +37,15 @@
                   <tr>
                     <td><?php echo $row['order_date'] ?></td>
                     <td><?php echo $row['status'] ?></td>
-               
+                    <td>
+        <form action="" method="post">
+        <input type="hidden" name="ordertodel" value="<?php echo $row['order_id'] ; ?>">
+        <input type="submit" value="delete" name="delorder">
+       </form>
+               </td>
                   </tr>
+
+                  <?php include '../operations/delorders.php'; ?>
 
               <?php
             }  

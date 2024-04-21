@@ -44,13 +44,6 @@ include '../app/header.php';
         <p class="card-text"> <?php echo $row['message']  ?></p>
         <p class="card-text"> <?php echo $row['message_date']  ?></p>
      
-
-       <form action="" method="post">
-        <input type="hidden" name="msgtodel" value="<?php echo $row['message']  ?>">
-        <input type="submit" value="delete" name="delmsg">
-       </form>
-     
-
        <form action="../operations/showmsg.php" method="post">
         <input type="hidden" name="msgtoshow" value="<?php echo $row['message']  ?>">
         <input type="submit" value="show more" name="showmsg">
@@ -83,7 +76,7 @@ $conn = null;
 <?php
 
 include '../app/footer.php';
-include '../operations/delmsgs.php';
+
 
 ?>
 </body>
