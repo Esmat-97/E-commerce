@@ -4,4 +4,4 @@
 
 # CUSTOMER page
  ![customer Image](./imgs/customer.png)
- ![customer Image](./imgs/customer.png)
+ ![customer Image](./imgs/customer-myprofile.png)
