@@ -48,10 +48,17 @@ $comer=$_COOKIE['userrole'];
     ?>
        <form action="" method="post">
         <input type="hidden" name="protodel" value="<?php echo $row['product_name']  ?>">
-        <input type="submit" value="delete" name="delpro">
+        <input type="submit" value="delete" class="btn btn-danger name="delpro">
        </form>
 
-      
+
+       <form action="../operations/updatepro.php" method="post">
+        <input type="hidden" name="protoup" value="<?php echo $row['product_name']; ?>">
+        <input type="submit" value="update" class="btn btn-secondary" name="uppro">
+       </form>
+
+      <?php include '../operations/updatepro.php'; ?>
+
        <?php
    }
    ?>
@@ -59,7 +66,7 @@ $comer=$_COOKIE['userrole'];
 
       <form action="../operations/showpro.php" method="post">
         <input type="hidden" name="protoshow" value="<?php echo $row['product_name']  ?>">
-        <input type="submit" value="show more" name="showpro">
+        <input type="submit" value="show more" class="btn btn-warning" name="showpro">
        </form>
 
 <?php
@@ -69,7 +76,7 @@ $comer=$_COOKIE['userrole'];
       <form action="" method="post">
     <input type="hidden" name="user_id" value="<?php echo $comming; ?>">
     <input type="hidden" name="product_id" value="<?php echo $row['product_id']; ?>">
-    <input type="submit" name="cart" value="Add to Cart">
+    <input type="submit" name="cart" class="btn btn-light" value="Add to Cart">
    </form>
 
    <?php

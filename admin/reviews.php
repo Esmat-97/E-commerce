@@ -56,7 +56,7 @@
                     <td>
                       <form action="" method="post">
                      <input type="hidden" name="idtoverify" value="<?php echo $row['review_id'] ;?>">
-                     <input type="submit" value="verify" name="verify">
+                     <input type="submit" value="verify" class="btn btn-secondary" name="verify">
                       </form>
                     </td>
                   </tr>

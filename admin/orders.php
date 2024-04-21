@@ -57,7 +57,7 @@
                     <td>
                       <form action="" method="post">
                         <input type="hidden" name="idtoaccept" value="<?php echo $row['order_id'] ;?>">
-                        <input type="submit" name="accept" value="accept">
+                        <input type="submit" name="accept" class="btn btn-secondary" value="accept">
                       </form>
                     </td>
                   </tr>

@@ -1,10 +1,10 @@
 # GEUST page 
 ![Guest Image](./imgs/guest.png)
 
-
 # CUSTOMER page
  ![customer Image](./imgs/customer.png)
- myprofile
+
+ # myprofile
  ![customer Image](./imgs/customer-myprofile.png)
 
  # ADMIN page

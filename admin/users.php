@@ -53,7 +53,7 @@
 
                       <form action="" method="post">
                         <input type="hidden" name="usertodel" value="<?php echo $row['email'] ?>">
-                        <input type="submit" value="delete" name="deluser">
+                        <input type="submit" value="delete" class="btn btn-danger" name="deluser">
                       </form>
                                 
                     </td>
@@ -62,7 +62,7 @@
 
                     <form action="../operations/showuser.php" method="post">
                         <input type="hidden" name="usertoshow" value="<?php echo $row['email'] ?>">
-                        <input type="submit" value="show more" name="showuser">
+                        <input type="submit" value="show more" class="btn btn-warning" name="showuser">
                       </form>
 
                     </td>

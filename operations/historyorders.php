@@ -40,7 +40,7 @@
                     <td>
         <form action="" method="post">
         <input type="hidden" name="ordertodel" value="<?php echo $row['order_id'] ; ?>">
-        <input type="submit" value="delete" name="delorder">
+        <input type="submit" value="delete" class="btn btn-danger" name="delorder">
        </form>
                </td>
                   </tr>

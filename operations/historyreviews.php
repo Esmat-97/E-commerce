@@ -42,7 +42,7 @@
                <td>
                <form action="" method="post">
         <input type="hidden" name="reviewtodel" value="<?php echo $row['review_id'] ; ?>">
-        <input type="submit" value="delete" name="delreview">
+        <input type="submit" value="delete" class="btn btn-danger" name="delreview">
        </form>
                </td>
                   </tr>
